@@ -1,16 +1,25 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void BtnStart()
     {
-        
+        SceneManager.LoadScene("Gameplay");
+    }
+    public void BtnSettings()
+    {
+        SceneManager.LoadScene("Settings");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void BtnCredits()
     {
-        
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void BtnExit()
+    {
+        Application.Quit();
     }
 }
