@@ -50,4 +50,5 @@ public class GhostController : MonoBehaviour
         }
         return true; 
     }
+
 }

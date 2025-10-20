@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CoinCollect : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class CoinCollect : MonoBehaviour
     private void Update()
     {
         UpdateUI();
+
+        if(coins == 10){
+            Win();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,5 +30,10 @@ public class CoinCollect : MonoBehaviour
     private void UpdateUI()
     {
         coinText.text = "Moedas: " + coins;
+    }
+
+    public void Win()
+    {
+        SceneManager.LoadScene("Win Screen");
     }
 }
