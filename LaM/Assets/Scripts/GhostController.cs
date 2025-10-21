@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GhostController : MonoBehaviour
 {
     public LayerMask obstructionLayer;
     public Transform target;
     public Camera playerCamera;
+    public RawImage imageText;
     public float speed = 5f;
     public float rotationSpeed = 5f;
     public float viewAngleThreshold = 60f;
@@ -18,6 +20,7 @@ public class GhostController : MonoBehaviour
 
         if (target == null || playerCamera == null) return;
 
+
         Vector3 dirToGhost = (transform.position - playerCamera.transform.position).normalized;
         float angle = Vector3.Angle(playerCamera.transform.forward, dirToGhost);
         bool isSeen = angle < viewAngleThreshold;
@@ -26,6 +29,8 @@ public class GhostController : MonoBehaviour
         _lookRotation = Quaternion.LookRotation(_direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation,
             Time.deltaTime * rotationSpeed);
+        
+        imageText.gameObject.SetActive(!isSeen || !inLineOfSight);
 
         if (!isSeen || !inLineOfSight)
         {
